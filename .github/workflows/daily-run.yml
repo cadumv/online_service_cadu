@@ -1,0 +1,25 @@
+name: Daily User Sync
+
+on:
+  schedule:
+    - cron: "0 12 * * *" # Executa todo dia às 12:00 UTC
+  workflow_dispatch: # Permite rodar manualmente
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v3
+
+      - name: Instalar Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+
+      - name: Instalar dependências
+        run: npm install
+
+      - name: Executar o script principal
+        run: node filterUsers.js
