@@ -11,5 +11,6 @@
   "description": "",
   "dependencies": {
     "node-fetch": "^2.6.6"
+    "googleapis": "^122.0.0"
   }
 }
