@@ -23,5 +23,6 @@ jobs:
 
       - name: Executar o script principal
         run: node filterUsers.js
+        
       - name: Atualizar Google Sheets
         run: node updateSheets.js
