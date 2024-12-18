@@ -40,3 +40,7 @@ jobs:
 
       - name: Atualizar Google Sheets
         run: node updateSheets.js
+      
+      - name: Verificar credenciais JSON
+        run: cat credentials.json
+
