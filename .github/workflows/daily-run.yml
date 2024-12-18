@@ -50,4 +50,8 @@ jobs:
       - name: Atualizar Google Sheets
         run: node updateSheets.js
 
+      - name: Listar arquivos no diretório
+        run: ls -l
+
+
 
