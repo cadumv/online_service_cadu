@@ -1,0 +1,31 @@
+name: Daily User Sync
+
+on:
+  schedule:
+    - cron: "0 12 * * *" # Executa todo dia às 12:00 UTC (ajuste o horário conforme necessário)
+  workflow_dispatch: # Permite rodar manualmente se necessário
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v3
+
+      - name: Instalar o Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+
+      - name: Instalar dependências
+        run: npm install
+
+      - name: Executar o script
+        run: node filterUsers.js
+
+      - name: Salvar resultado no Google Sheets
+        env:
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+        run: |
+          # Aqui você chama outro script para atualizar o Google Sheets.
