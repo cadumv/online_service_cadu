@@ -23,6 +23,14 @@ jobs:
 
       - name: Executar o script principal
         run: node filterUsers.js
+
+      - name: Upload dos arquivos JSON gerados
+        uses: actions/upload-artifact@v3
+        with:
+          name: arquivos-filtrados
+          path: |
+            activeUsers.json
+            nonActiveUsers.json
         
       - name: Atualizar Google Sheets
         run: node updateSheets.js
