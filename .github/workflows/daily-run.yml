@@ -44,3 +44,10 @@ jobs:
       - name: Verificar credenciais JSON
         run: cat credentials.json
 
+      - name: Configurar variáveis de ambiente
+        run: echo "GOOGLE_CREDENTIALS=${{ secrets.GOOGLE_CREDENTIALS }}" >> $GITHUB_ENV
+
+      - name: Atualizar Google Sheets
+        run: node updateSheets.js
+
+
