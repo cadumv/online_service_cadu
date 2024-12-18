@@ -2,8 +2,8 @@ name: Daily User Sync
 
 on:
   schedule:
-    - cron: "0 12 * * *" # Executa todo dia às 12:00 UTC
-  workflow_dispatch: # Permite rodar manualmente
+    - cron: "0 12 * * *" # Executa todos os dias às 12:00 UTC
+  workflow_dispatch: # Permite execução manual
 
 jobs:
   run-script:
@@ -13,7 +13,7 @@ jobs:
       - name: Checkout do código
         uses: actions/checkout@v3
 
-      - name: Instalar Node.js
+      - name: Instalar o Node.js
         uses: actions/setup-node@v3
         with:
           node-version: "18"
@@ -21,7 +21,10 @@ jobs:
       - name: Instalar dependências
         run: npm install
 
-      - name: Executar o script principal
+      - name: Executar o script fetchContacts.js (gera users.json)
+        run: node fetchContacts.js
+
+      - name: Executar o script filterUsers.js (gera activeUsers.json e nonActiveUsers.json)
         run: node filterUsers.js
 
       - name: Upload dos arquivos JSON gerados
@@ -31,6 +34,6 @@ jobs:
           path: |
             activeUsers.json
             nonActiveUsers.json
-        
+
       - name: Atualizar Google Sheets
         run: node updateSheets.js
