@@ -13,9 +13,6 @@ jobs:
       - name: Checkout do código
         uses: actions/checkout@v3
 
-      - name: Configurar horário UTC
-        run: sudo timedatectl set-timezone UTC
-
       - name: Verificar horário
         run: date
 
