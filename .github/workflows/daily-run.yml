@@ -38,12 +38,6 @@ jobs:
             activeUsers.json
             nonActiveUsers.json
 
-      - name: Atualizar Google Sheets
-        run: node updateSheets.js
-      
-      - name: Verificar credenciais JSON
-        run: cat credentials.json
-
       - name: Configurar variáveis de ambiente
         run: echo "GOOGLE_CREDENTIALS=${{ secrets.GOOGLE_CREDENTIALS }}" >> $GITHUB_ENV
 
@@ -52,6 +46,3 @@ jobs:
 
       - name: Listar arquivos no diretório
         run: ls -l
-
-
-
