@@ -39,7 +39,7 @@ jobs:
             nonActiveUsers.json
 
       - name: Configurar variáveis de ambiente
-        run: echo "GOOGLE_CREDENTIALS=${{ secrets.GOOGLE_CREDENTIALS }}" >> $GITHUB_ENV
+        run: echo "${{ secrets.GOOGLE_CREDENTIALS }}" > credentials.json
 
       - name: Atualizar Google Sheets
         run: node updateSheets.js
