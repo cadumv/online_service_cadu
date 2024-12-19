@@ -40,6 +40,9 @@ jobs:
 
       - name: Configurar variáveis de ambiente
         run: echo "${{ secrets.GOOGLE_CREDENTIALS }}" > credentials.json
+        
+      - name: Verificar conteúdo do arquivo credentials.json
+        run: cat credentials.json
 
       - name: Atualizar Google Sheets
         run: node updateSheets.js
