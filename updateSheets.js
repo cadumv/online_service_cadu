@@ -1,6 +1,3 @@
-const token = await auth.getAccessToken();
-console.log('Token de acesso gerado:', token);
-
 const { google } = require('googleapis');
 const fs = require('fs');
 
@@ -19,10 +16,6 @@ async function updateGoogleSheets() {
     const sheets = google.sheets({ version: 'v4', auth });
 
     console.log('Autenticado com sucesso! Atualizando Google Sheets...');
-
-    // Gerar e verificar token de acesso
-    const token = await auth.getAccessToken();
-    console.log('Token de acesso gerado:', token);
 
     // Ler arquivos filtrados
     const activeUsers = JSON.parse(fs.readFileSync('activeUsers.json', 'utf8'));
@@ -54,5 +47,5 @@ async function updateGoogleSheets() {
   }
 }
 
-// Chamar a função principal
+// Executar a função principal
 updateGoogleSheets();
