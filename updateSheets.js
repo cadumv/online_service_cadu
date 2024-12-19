@@ -12,13 +12,17 @@ const auth = new google.auth.GoogleAuth({
   scopes: ['https://www.googleapis.com/auth/spreadsheets'],
 });
 
-const sheets = google.sheets({ version: 'v4', auth });
-
 const SPREADSHEET_ID = '1oF9WFtv53BPmSZI53GZ7tBud9cnMVOAwnMEY5g_0-l8';
 
 async function updateGoogleSheets() {
   try {
+    const sheets = google.sheets({ version: 'v4', auth });
+
     console.log('Autenticado com sucesso! Atualizando Google Sheets...');
+
+    // Gerar e verificar token de acesso
+    const token = await auth.getAccessToken();
+    console.log('Token de acesso gerado:', token);
 
     // Ler arquivos filtrados
     const activeUsers = JSON.parse(fs.readFileSync('activeUsers.json', 'utf8'));
@@ -50,4 +54,5 @@ async function updateGoogleSheets() {
   }
 }
 
+// Chamar a função principal
 updateGoogleSheets();
