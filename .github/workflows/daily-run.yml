@@ -24,12 +24,6 @@ jobs:
       - name: Instalar dependências
         run: npm install
 
-      - name: Criar arquivo de credenciais
-        run: echo "${{ secrets.GOOGLE_CREDENTIALS }}" > credentials.json
-
-      - name: Verificar conteúdo do arquivo credentials.json
-        run: cat credentials.json
-
       - name: Executar o script fetchContacts.js (gera users.json)
         run: node fetchContacts.js
 
