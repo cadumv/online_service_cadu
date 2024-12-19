@@ -1,5 +1,14 @@
 const { google } = require('googleapis');
+const fs = require('fs');
 
+// Verificar se o arquivo credentials.json está correto
+try {
+  const credentials = JSON.parse(fs.readFileSync('credentials.json', 'utf8'));
+  console.log('Credenciais lidas com sucesso:', credentials);
+} catch (error) {
+  console.error('Erro ao ler o arquivo credentials.json:', error);
+  process.exit(1);
+}
 // Ler a variável de ambiente GOOGLE_CREDENTIALS
 const credentials = JSON.parse(process.env.GOOGLE_CREDENTIALS);
 
