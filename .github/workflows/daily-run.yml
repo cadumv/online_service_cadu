@@ -38,9 +38,6 @@ jobs:
             activeUsers.json
             nonActiveUsers.json
 
-      - name: Verificar conteúdo do arquivo credentials.json
-        run: cat credentials.json
-
       - name: Atualizar Google Sheets
         run: node updateSheets.js
 
