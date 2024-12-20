@@ -8,10 +8,9 @@
   },
   "dependencies": {
     "node-fetch": "^2.6.6",
-    "googleapis": "^122.0.0"
+    "axios": "^1.5.0"
   },
   "keywords": [],
   "author": "",
   "license": "ISC"
 }
-
