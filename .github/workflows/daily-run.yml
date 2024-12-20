@@ -2,7 +2,7 @@ name: Daily User Sync
 
 on:
   schedule:
-    - cron: "*/1 * * * *" # Executa a cada minuto
+    - cron: "*/5 * * * *" # Executa a cada minuto
   workflow_dispatch: # Permite execução manual
 
 jobs:
