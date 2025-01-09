@@ -11,13 +11,13 @@ jobs:
 
     steps:
       - name: Checkout do código
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Verificar horário
         run: date
 
       - name: Instalar o Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: "18"
 
@@ -31,7 +31,7 @@ jobs:
         run: node filterUsers.js
 
       - name: Upload dos arquivos JSON gerados
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: arquivos-filtrados
           path: |
